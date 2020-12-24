@@ -7,8 +7,11 @@
     "test": "test"
   },
   "devDependencies": {
-    "mocha": "^8.1.1",
-    "chai": "^4.2.0"
+    "chai": "^4.2.0",
+    "eslint": "^7.16.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "mocha": "^8.1.1"
   },
   "scripts": {
     "test": "mocha"
