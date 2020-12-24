@@ -37,13 +37,13 @@ const cat = () => fetch('cats').then((res) => res.data.cats.sort());
 
 const dog = () => fetch('dogs').then((res) => {
   const newArray = res.data.dogs;
-  console.log(newArray);
+
   const naughtiestDog = newArray.reduce((previousDog, currentDog) => {
     if (previousDog.naughty > currentDog.naughty) {
       return previousDog;
     }
     return currentDog;
-  });
+  }); return naughtiestDog;
 });
 
 // 4 Create a function that uses the getData function to make requests to the "jokes" URL and returns
@@ -56,7 +56,22 @@ const dog = () => fetch('dogs').then((res) => {
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
 //
 
-const joke = () => fetch('jokes', 'Object');
+const joke = () => {
+  // Create an object with question and answer keys with empty strings to catch the result
+  const result = { question: '', answer: '' };
+  // Make an API call to get the joke question object
+  fetch('jokes', 'question').then((res) => {
+    // Use dot notation to attach the question value to the result
+    result.question = res.joke;
+  });
+  // Make an API call to get the answer object
+  fetch('jokes', 'answer').then((res) => {
+    // Use dot notation to attach the answer value to the result
+    result.answer = res.answer;
+  });
+  // Return the final result
+  return result;
+};
 
 module.exports = {
   food,
